@@ -1,0 +1,52 @@
+.sidenav-container {
+  height: 100%;
+  margin: auto;
+}
+
+.sidenav {
+  width: 200px;
+  border-radius: 10px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position:sticky;
+  top:10px;
+  z-index: 1;
+  width: 97%;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.list-icon {
+  margin-right: 10px;
+}
+
+.mat-list-item {
+  color:#808ee0;
+}
+
+.active {
+  background-color:#808ee0 !important;
+  color: white !important;
+  border-radius: 5px;
+}
+
+mat-sidenav {
+  background: #1967c1;
+  color: white;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+a{
+  margin-top: 5px;
+}
+
+.flexExpand {
+  flex: 1 1 auto;
+}

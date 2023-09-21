@@ -1,0 +1,40 @@
+<mat-sidenav-container class="sidenav-container" >
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false"
+      class="d-flex flex-column flex-shrink-0 p-3 mat-elevation-z8">
+    <mat-toolbar style="background-color: #1967c1;">Navigation</mat-toolbar>
+    <mat-divider></mat-divider>
+    <mat-nav-list class="nav nav-pills flex-column mb-auto">
+      <a mat-list-item routerLinkActive="active" routerLink="dashboard/buy" (click)="updateTitle('Buy Property')"><mat-icon class="list-icon">store</mat-icon>Buy Property</a>
+      <ng-container *ngIf="isSeller() || isAdmin()">
+        <a mat-list-item routerLinkActive="active" routerLink="dashboard/sell" (click)="updateTitle('Sell Property')"><mat-icon class="list-icon">savings</mat-icon>Sell Property</a>
+      </ng-container>
+      <ng-container *ngIf="!isAdmin()">
+        <a mat-list-item routerLinkActive="active" routerLink="dashboard/support" (click)="updateTitle('Support')"><mat-icon class="list-icon">contact_support</mat-icon>Support</a>
+      </ng-container>
+      <ng-container *ngIf="isAdmin()">
+        <a mat-list-item routerLinkActive="active" routerLink="dashboard/enquiry" (click)="updateTitle('Enquiry')">
+          <mat-icon class="list-icon">contact_support</mat-icon>Enquiry
+        </a>
+      </ng-container>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="toolbar mat-elevation-z3">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>{{ title }}</span>
+      <span class="flexExpand"></span>
+      <button mat-mini-fab class="logout" (click)="logout()"><mat-icon>logout</mat-icon></button>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
